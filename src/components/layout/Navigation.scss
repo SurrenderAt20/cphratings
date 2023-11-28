@@ -1,0 +1,186 @@
+:root {
+  --navbar-width: 256px;
+  --navbar-width-min: 80px;
+  --navbar-dark-primary: #011627;
+  --navbar-dark-secondary: #2c3e50;
+  --navbar-light-primary: #f5f6fa;
+  --navbar-light-secondary: #8392a5;
+}
+
+#navBar {
+  position: absolute;
+  height: 100%;
+  background: var(--navbar-dark-primary);
+  display: flex;
+  flex-direction: column;
+  color: var(--navbar-light-primary);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  overflow: hidden;
+  user-select: none;
+
+  hr {
+    margin: 0;
+    position: relative;
+    width: calc(100%);
+    border: none;
+    border-top: solid 1px var(--navbar-dark-secondary);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+
+#navHeader {
+  position: relative;
+  width: var(--navbar-width);
+  min-height: 80px;
+  background: var(--navbar-dark-primary);
+  border-radius: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  transition: width 0.2s;
+
+  hr {
+    left: 0;
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+#navTitle {
+  font-size: 1.5rem;
+  transition: opacity 1s;
+}
+
+label[for="navToggle"] {
+  position: absolute;
+  right: 0;
+  width: 3rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#navToggleBurger {
+  position: relative;
+  width: 16px;
+  height: 2px;
+  background: var(--navbar-dark-primary);
+  border-radius: 99px;
+  transition: background 0.2s;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    width: 10px;
+    height: 2px;
+    background: var(--navbar-light-primary);
+    border-radius: 99px;
+    transform: translate(2px, 8px) rotate(30deg);
+    transition: 0.2s;
+
+    &:after {
+      top: 6px;
+      transform: translate(2px, -8px) rotate(-30deg);
+    }
+  }
+}
+
+#navContent {
+  margin: -16px 0;
+  padding: 16px 0;
+  position: relative;
+  flex: 1;
+  width: var(--navbar-width);
+  background: var(--navbar-dark-primary);
+  box-shadow: 0 0 0 16px var(--navbar-dark-primary);
+  direction: rtl;
+  overflow-x: hidden;
+  transition: width 0.2s;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #fff;
+  }
+
+  &::-webkit-scrollbar-button {
+    height: 16px;
+  }
+}
+
+#navContentHighlight {
+  position: absolute;
+  left: 16px;
+  top: -54 - 16px;
+  width: calc(100% - 16px);
+  height: 54px;
+  background: var(--background);
+  background-attachment: fixed;
+  border-radius: 16px 0 0 16px;
+  transition: top 0.2s;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 16px 16px var(--background);
+
+    &:after {
+      top: 100%;
+      box-shadow: 16px -16px var(--background);
+    }
+  }
+}
+
+.navItem {
+  position: relative;
+  margin-left: 16px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  color: var(--navbar-light-secondary);
+  direction: ltr;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.2s;
+
+  span {
+    transition: opacity 1s;
+    margin-left: 14px;
+  }
+
+  .fas {
+    transition: min-width 0.2s;
+  }
+
+  @for $i from 1 through 8 {
+    &:nth-of-type(#{$i}):hover {
+      color: var(--navbar-dark-primary);
+
+      & ~ #navContentHighlight {
+        top: ($i - 1) * 54 + 16px;
+      }
+    }
+  }
+}
