@@ -47,6 +47,10 @@
   align-items: center;
   transition: width 0.2s;
 
+  span {
+    margin-left: 1rem;
+  }
+
   hr {
     left: 0;
     position: absolute;
@@ -174,9 +178,9 @@ label[for="navToggle"] {
     transition: min-width 0.2s;
   }
 
-  @for $i from 1 through 8 {
+  @for $i from 1 through 9 {
     &:nth-of-type(#{$i}):hover {
-      color: var(--navbar-dark-primary);
+      color: var(--navbar-light-primarynavbar-light-primary);
 
       & ~ #navContentHighlight {
         top: ($i - 1) * 54 + 16px;

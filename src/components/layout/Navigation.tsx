@@ -1,15 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPalette,
+  faBeerMugEmpty,
+  faScissors,
+  faMartiniGlassCitrus,
+  faMugHot,
+  faUtensils,
   faImages,
   faThumbtack,
-  faHeart,
+  faCalendarDays,
   faChartLine,
-  faFire,
-  faMagic,
-  faGem,
-  faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./Navigation.scss";
@@ -34,25 +34,35 @@ const Navigation = () => {
     <div id="navBar">
       <div id="navHeader">
         <Link id="navTitle" to="/">
-          CPH RATINGS
+          <span>CPH RATINGS</span>
         </Link>
         <hr />
       </div>
       <ul id="navContent">
-        <NavigationItem icon={faPalette} label="Your Work" to="/your-work" />
+        <NavigationItem
+          icon={faChartLine}
+          label="Trending Places"
+          to="/trending"
+        />
         <NavigationItem icon={faImages} label="Assets" to="/assets" />
         <NavigationItem
           icon={faThumbtack}
-          label="Pinned Items"
+          label="Pinned Places"
           to="/pinned-items"
         />
         <hr />
-        <NavigationItem icon={faHeart} label="Following" to="/following" />
-        <NavigationItem icon={faChartLine} label="Trending" to="/trending" />
-        <NavigationItem icon={faFire} label="Challenges" to="/challenges" />
-        <NavigationItem icon={faMagic} label="Spark" to="/spark" />
+        <NavigationItem icon={faBeerMugEmpty} label="Bars" to="/bars" />
+        <NavigationItem icon={faScissors} label="Barbers" to="/barbers" />
+        <NavigationItem icon={faMugHot} label="Cafees" to="/cafees" />
+        <NavigationItem
+          icon={faMartiniGlassCitrus}
+          label="Night Clubs"
+          to="/clubs"
+        />
+        <NavigationItem icon={faUtensils} label="Restaurants" to="/events" />
+        <NavigationItem icon={faCalendarDays} label="Events" to="/events" />
         <hr />
-        <NavigationItem icon={faGem} label="Codepen Pro" to="/codepen-pro" />
+
         <div id="navContentHighlight"></div>
       </ul>
     </div>
